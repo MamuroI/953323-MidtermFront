@@ -57,6 +57,7 @@ export function LoginProvider({ children }) {
     }
 
     function handleRegister(){
+        
         const data = {
             firstname: this.firstName,
             lastname: this.lastName,
