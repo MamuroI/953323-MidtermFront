@@ -6,8 +6,8 @@ export default function MainRoutes() {
     return (
         <Router>
             <Routes>
-                <Route path="/login" element={<Login />} />
-                <Route path="/" element={<Home />} />
+                <Route exact path="/" element={<Home />} />
+                <Route exact path="/login" element={<Login />} /> 
             </Routes>
         </Router>
     )
