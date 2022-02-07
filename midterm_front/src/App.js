@@ -1,11 +1,12 @@
 import './App.css';
 import MainRoutes from './routes'
 import { createTheme, ThemeProvider } from '@material-ui/core';
+import { CoreProvider } from './core/controller';
 
 const theme = createTheme({
-  typography:{
-    allVariants:{
-      fontFamily:'Prompt'
+  typography: {
+    allVariants: {
+      fontFamily: 'Prompt'
     }
   }
 })
@@ -13,7 +14,9 @@ const theme = createTheme({
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <MainRoutes />
+      <CoreProvider>
+        <MainRoutes />
+      </CoreProvider>
     </ThemeProvider>
   );
 }
