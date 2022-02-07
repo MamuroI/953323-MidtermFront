@@ -1,18 +1,14 @@
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import { routes } from './routes'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Home from '../feature/home/page';
+import Login from '../feature/login/page'
 
-export default function Routes() {
+export default function MainRoutes() {
     return (
         <Router>
-            <Switch>
-                {
-                    routes.map((route, index)=> {
-                        return(
-                            <Route key={index} path={route.path} component={route.component} exact={route.exact} />
-                        )
-                    })
-                }
-            </Switch>
+            <Routes>
+                <Route path="/login" element={<Login />} />
+                <Route path="/" element={<Home />} />
+            </Routes>
         </Router>
     )
 }
