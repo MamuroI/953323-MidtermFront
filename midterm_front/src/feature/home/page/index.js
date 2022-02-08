@@ -199,7 +199,7 @@ function Home() {
                                     <Button
                                         variant="contained"
                                         className={classes.cancelBtn}
-                                        //onClick={() => controller.handleRegister()}
+                                        onClick={() => controller.handleCancel()}
                                     >
                                         Cancel
                                     </Button>
@@ -292,9 +292,10 @@ function Home() {
                                 </Grid>
                                 <Grid container item xs={2}>
                                     <Input
+                                        disabled={controller.ownedCoin <=5 ? true : false}
                                         type="number"
                                         className={classes.inputPerCoin}
-                                        value={controller.perCoin}
+                                        value={controller.ownedCoin <=5 ? 10 : controller.perCoin}
                                         onChange={(e) =>
                                             e.target.value < 0
                                                 ? (e.target.value = 0)
@@ -352,7 +353,7 @@ function Home() {
                                     <Button
                                         variant="contained"
                                         className={classes.cancelBtn}
-                                        //onClick={() => controller.handleRegister()}
+                                        onClick={() => controller.handleCancel()}
                                     >
                                         Cancel
                                     </Button>

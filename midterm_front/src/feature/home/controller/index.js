@@ -81,6 +81,12 @@ class Controller {
         }
     }
 
+    handleCancel(){
+        this.setSelectBuyAmount(0)
+        this.setSelectSellAmount(0)
+        this.setPerCoin(0);
+    }
+
     addBuySelect() {
         if (this.context.selectBuyAmount < this.context.buyLimit) {
             this.context.setSelectBuyAmount(this.context.selectBuyAmount + 1);
@@ -128,7 +134,11 @@ export function HomeProvider({ children }) {
     }, [selectBuyAmount]);
 
     useEffect(() => {
-        setTotalSellPrice(selectSellAmount * perCoin);
+        if (ownedCoin > 5) {
+            setTotalSellPrice(selectSellAmount * perCoin);
+        } else {
+            setTotalSellPrice(selectSellAmount * 10);
+        }
     }, [selectSellAmount, perCoin]);
 
     useEffect(() => {
