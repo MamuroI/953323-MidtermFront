@@ -8,8 +8,6 @@ import Input from "../../../components/input";
 function Home() {
     const classes = useStyles();
     const controller = useController();
-    console.log(controller.selectBuyAmount);
-    console.log(controller.totalBuyPrice);
     return (
         <>
             <Grid container className={classes.body}>
@@ -38,7 +36,7 @@ function Home() {
                     </Grid>
                     <Grid container item xs={12} className={classes.userLimit}>
                         <Typography className={classes.infoText}>
-                            Today's buy limits : 5
+                            Today's buy limits : {controller.buyLimit}
                         </Typography>
                     </Grid>
                     <Grid
@@ -129,7 +127,7 @@ function Home() {
                                         variant="contained"
                                         className={classes.minusBtn}
                                         onClick={() =>
-                                            controller.setSelectBuyAmount(-1)
+                                            controller.minusBuySelect()
                                         }
                                     >
                                         -
@@ -155,7 +153,7 @@ function Home() {
                                         variant="contained"
                                         className={classes.plusBtn}
                                         onClick={() =>
-                                            controller.setSelectBuyAmount(1)
+                                            controller.addBuySelect()
                                         }
                                     >
                                         +
@@ -187,7 +185,7 @@ function Home() {
                                     <Button
                                         variant="contained"
                                         className={classes.confirmBtn}
-                                        //onClick={() => controller.handleRegister()}
+                                        onClick={() => controller.handleBuy()}
                                     >
                                         Confirm
                                     </Button>
@@ -241,7 +239,7 @@ function Home() {
                                         variant="contained"
                                         className={classes.minusBtn}
                                         onClick={() =>
-                                            controller.setSelectSellAmount(-1)
+                                            controller.minusSellSelect()
                                         }
                                     >
                                         -
@@ -267,7 +265,7 @@ function Home() {
                                         variant="contained"
                                         className={classes.plusBtn}
                                         onClick={() =>
-                                            controller.setSelectSellAmount(1)
+                                            controller.addSellSelect()
                                         }
                                     >
                                         +
@@ -340,7 +338,7 @@ function Home() {
                                     <Button
                                         variant="contained"
                                         className={classes.confirmBtn}
-                                        //onClick={() => controller.handleRegister()}
+                                        onClick={() => controller.handleSell()}
                                     >
                                         Confirm
                                     </Button>
