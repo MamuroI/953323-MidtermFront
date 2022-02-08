@@ -1,4 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
+import { client } from '../../../api'
+
 export const context = createContext();
 
 export const useController = () => new Controller(useContext(context));
@@ -23,6 +25,10 @@ class Controller {
 
         this.userBalance = context.userBalance;
         this.setUserBalance = context.setUserBalance;
+        
+        this.stock = context.stock;
+        this.setStock = context.setStock;
+
     }
 
     setSelectBuyAmount(int) {
@@ -53,6 +59,10 @@ class Controller {
         }
     }
 
+    getStock(){
+        client.get('/stock')
+    }
+
     handleLogout(){
         localStorage.removeItem('user')
         window.location.reload(false)
@@ -68,6 +78,7 @@ export function HomeProvider({ children }) {
     const [perCoin, setPerCoin] = useState(10);
     const [ownedCoin, setOwnedCoin] = useState(7);
     const [userBalance, setUserBalance] = useState(40);
+    const [stock, setStock] = useState(0);
 
     useEffect(() => {
         setTotalBuyPrice(selectBuyAmount * 10);
@@ -77,7 +88,12 @@ export function HomeProvider({ children }) {
         setTotalSellPrice(selectSellAmount * perCoin);
     }, [selectSellAmount, perCoin]);
 
-   
+    useEffect(() => {
+        client.get('/stock').then(
+            res=>setStock(res.data.amount)
+        )
+    }, []);
+
     return (
         <context.Provider
             value={{
@@ -97,6 +113,7 @@ export function HomeProvider({ children }) {
                 setOwnedCoin,
                 userBalance,
                 setUserBalance,
+                stock
             }}
         >
             {children}

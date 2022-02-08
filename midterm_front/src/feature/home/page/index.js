@@ -25,7 +25,7 @@ function Home() {
                 <Grid container item className={classes.header}>
                     <Grid container item className={classes.availableBox}>
                         <Typography className={classes.availableText}>
-                            Available coins : 25
+                            Available coins : {controller.stock}
                         </Typography>
                     </Grid>
                 </Grid>
