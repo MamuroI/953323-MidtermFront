@@ -46,13 +46,13 @@ export function LoginProvider({ children }) {
             username: this.userName,
             password: this.passWord
         }
-        console.log(data)
+        // console.log(data)
          client.post('',data)
             .then(res => {
-                console.log(res)
+                // console.log(res)
             })
             .catch(err => {
-                console.log(err)
+                // console.log(err)
             })
     }
 
@@ -65,13 +65,13 @@ export function LoginProvider({ children }) {
             username: this.userName,
             password: this.passWord
         }
-        console.log(data)
+        // console.log(data)
         client.post('',data)
             .then(res => {
-                console.log(res)
+                // console.log(res)
             })
             .catch(err =>{
-                console.log(err)
+                // console.log(err)
             })
     }
 

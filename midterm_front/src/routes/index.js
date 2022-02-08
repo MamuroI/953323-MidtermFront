@@ -8,14 +8,14 @@ export default function MainRoutes() {
     const globalController = useController()
 
     useEffect(() => {
-        console.log(globalController.user);
+        // console.log(globalController.user);
     }, [globalController.user]);
 
 
     return (
         <Router>
             <Routes>
-                {
+                {/* {
                     globalController.user ? (
                         <>
                             <Route exact path="/login" element={<Login />} />
@@ -25,7 +25,10 @@ export default function MainRoutes() {
                             <Route exact path="/" element={<Home />} />
                         </>
                     )
-                }
+                    
+                } */}
+                <Route exact path="/login" element={<Login />} />
+                <Route exact path="/" element={<Home />} />
             </Routes>
         </Router>
     )
