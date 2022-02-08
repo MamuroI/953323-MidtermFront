@@ -1,10 +1,10 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-
 export const context = createContext();
 
 export const useController = () => new Controller(useContext(context));
 
 class Controller {
+
     constructor(context) {
         this.context = context;
         this.actionMode = context.actionMode;
@@ -52,6 +52,11 @@ class Controller {
             this.context.setPerCoin(0);
         }
     }
+
+    handleLogout(){
+        localStorage.removeItem('user')
+        window.location.reload(false)
+    }
 }
 
 export function HomeProvider({ children }) {
@@ -72,6 +77,7 @@ export function HomeProvider({ children }) {
         setTotalSellPrice(selectSellAmount * perCoin);
     }, [selectSellAmount, perCoin]);
 
+   
     return (
         <context.Provider
             value={{

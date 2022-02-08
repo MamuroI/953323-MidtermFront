@@ -17,7 +17,7 @@ function Home() {
                     <Button
                         variant="contained"
                         className={classes.logoutBtn}
-                        //onClick={() => controller.handleRegister()}
+                        onClick={() => controller.handleLogout()}
                     >
                         Logout
                     </Button>

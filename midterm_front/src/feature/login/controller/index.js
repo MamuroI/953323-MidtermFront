@@ -45,19 +45,21 @@ export function LoginProvider({ children }) {
         const data = {
             username: this.userName,
             password: this.passWord
+
         }
-        // console.log(data)
-         client.post('',data)
+        console.log(data)
+        client.post('/auth',data)
             .then(res => {
-                // console.log(res)
+                localStorage.setItem('token', res.data.token)
+                localStorage.setItem('user', JSON.stringify(res.data.user))
+                window.location.reload(false)
             })
             .catch(err => {
-                // console.log(err)
+                console.log(err)
             })
     }
 
     function handleRegister(){
-        
         const data = {
             firstname: this.firstName,
             lastname: this.lastName,
