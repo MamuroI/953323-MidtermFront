@@ -6,7 +6,8 @@ import { CoreProvider } from './core/controller';
 const theme = createTheme({
   typography: {
     allVariants: {
-      fontFamily: 'Prompt'
+      fontFamily: 'Prompt',
+      fontStyle: "normal",
     }
   }
 })

@@ -67,10 +67,11 @@ export function LoginProvider({ children }) {
             username: this.userName,
             password: this.passWord
         }
-        // console.log(data)
-        client.post('',data)
+        console.log(data)
+        client.post('/register',data)
             .then(res => {
-                // console.log(res)
+                console.log(res)
+                window.location.reload(false)
             })
             .catch(err =>{
                 // console.log(err)

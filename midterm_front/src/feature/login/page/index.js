@@ -1,8 +1,9 @@
-import { makeStyles, Typography, Grid, Button } from "@material-ui/core";
+import { makeStyles, Typography, Grid, Button, withTheme } from "@material-ui/core";
 import React from "react";
 import { LoginProvider, useController } from "../controller";
 import { withController } from "./../../../hoc/withController";
 import Input from "../../../components/input";
+import bg from "../../../assets/image/bg.png";
 
 function Login() {
     const classes = useStyles();
@@ -12,9 +13,9 @@ function Login() {
         <>
             <Grid container className={classes.body}>
                 {controller.currentForm === 0 ? (
-                    <>
+                    <Grid container item xs={12}  className={classes.form}>
                         <Grid container item xs={12} justifyContent="center">
-                            <Typography>Login Form</Typography>
+                            <Typography style={{fontSize:32}}>Login</Typography>
                         </Grid>
                         <Grid container item className={classes.inputContainer}>
                             <Grid
@@ -93,6 +94,7 @@ function Login() {
                             <Typography
                                 className={classes.registerText2}
                                 onClick={() => controller.setCurrentForm(1)}
+                                style={{color:'#DE561C'}}
                             >
                                 Register
                             </Typography>
@@ -107,11 +109,11 @@ function Login() {
                                 Login
                             </Button>
                         </Grid>
-                    </>
+                    </Grid>
                 ) : (
-                    <>
+                    <Grid container item xs={12}  className={classes.form}>
                         <Grid container item xs={12} justifyContent="center">
-                            <Typography>Register Form</Typography>
+                            <Typography style={{fontSize:32}}>Register</Typography>
                         </Grid>
                         <Grid container item className={classes.inputContainer}>
                             <Grid
@@ -283,6 +285,8 @@ function Login() {
                             <Typography
                                 className={classes.registerText2}
                                 onClick={() => controller.setCurrentForm(0)}
+                                style={{color:'#DE561C'}}
+
                             >
                                 Login
                             </Typography>
@@ -293,11 +297,12 @@ function Login() {
                             xs={12}
                             className={classes.btnContainer}
                         >
-                            <Button variant="contained" className={classes.btn} onClick={() => controller.handleRegister()}>
+                                
+                            <Button variant="contained" className={classes.btn} onClick={() => controller.handleRegister()} >
                                 Register
                             </Button>
                         </Grid>
-                    </>
+                    </Grid>
                 )}
             </Grid>
         </>
@@ -306,6 +311,21 @@ function Login() {
 
 const useStyles = makeStyles((theme) => ({
     body: {
+        backgroundImage: `url(${bg})`,
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
+        height: "100vh",
+        justifyContent: "center", 
+    },
+    form:{
+        background: 'white',
+        alignSelf: 'center',
+        maxWidth: 350,
+        minHeight: 450,
+        maxHeight: 800,
+        borderRadius: 5,
+        padding: 25
     },
     inputGroup: {
         marginTop: "7px",
@@ -329,6 +349,7 @@ const useStyles = makeStyles((theme) => ({
         "&:hover": {
             color: "green",
         },
+        marginLeft: 10
     },
     btnContainer: {
         justifyContent: "center",
@@ -336,11 +357,11 @@ const useStyles = makeStyles((theme) => ({
         marginBottom: "10px",
     },
     btn: {
-        background: "blue",
-        color: "white",
+        background: "#FEAA2B",
+        color: "black",
         "&:hover": {
             color: "black",
-            background: "lightblue",
+            background: "#FFCB3C",
         },
     },
 }));

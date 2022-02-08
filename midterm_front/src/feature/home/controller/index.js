@@ -61,8 +61,11 @@ class Controller {
                 console.log(res);
                 this.setOwnedCoin(res.data.coinAmount);
                 this.setUserBalance(res.data.money);
+
             });
         }
+        this.handleCancel()
+
     }
 
     handleSell() {
@@ -77,8 +80,11 @@ class Controller {
                 this.setOwnedCoin(res.data.coinAmount);
                 this.setUserBalance(res.data.money);
                 this.setBuyLimit(res.data.buyLimit);
+
             });
         }
+        this.handleCancel()
+
     }
 
     handleCancel(){
